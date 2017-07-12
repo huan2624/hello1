@@ -1,2 +1,3 @@
 ##ignore this file##
-/test/
+/test/*
+!/test/a.txt
