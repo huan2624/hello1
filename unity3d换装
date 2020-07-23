@@ -1,0 +1,13 @@
+换装有几种形式:
+第一种类似换武器，加载相应的模型挂载到挂点下即可。
+第二种是换部件，比如头，手，这种加载SkinnedsMeshRenderer后，用它上面的mesh,bone,materials替换掉目标上的即可，如果用的是同一套骨骼，那么连骨骼都不需要刷新。
+
+SkinnedsMeshRenderer 它主要的三个成员是Mesh（网格），Bone（骨骼），Marital（材质）；一只Model都是由许多个Mesh组成的，Bone的作用是将Mesh中的顶点附着（绑定）在骨骼之上，而且每个顶点可以被多个骨骼所控制。没有了Bone结构支撑的Mesh是无法运动的。
+理解了这层关系剩下的就是具体逻辑随机应变了。
+换装也即是更换SkinnedMeshRenderer的三个成员，所以核心代码就三句
+self:setBones(curSmr,newSmr)
+curSmr.sharedMesh = newSmr.sharedMesh
+curSmr.sharedMaterials = newSmr.sharedMaterials
+————————————————
+版权声明：本文为CSDN博主「watl0」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/yhhwatl/java/article/details/80256418
